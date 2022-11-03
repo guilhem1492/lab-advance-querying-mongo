@@ -132,7 +132,7 @@
 
 ### 17. All the companies whose acquisition amount is more than 10.000.000, and currency is 'EUR'.
 
-- **`query`**: ``
+- **`query`**: `{"acquisition.price_amount": { $gt: 10000000 }, "acquisition.price_currency_code": "EUR"}`
 - **`projection`**: ``
 - **`sort`**: ``
 - **`skip`**: ``
@@ -140,15 +140,15 @@
 
 ### 18. All the companies that have been acquired on the first trimester of the year. Limit the search to 10 companies, and retrieve only their `name` and `acquisition` fields.
 
-- **`query`**: ``
-- **`projection`**: ``
+- **`query`**: `{"acquisition.acquired_month": { $lt: 3 }}`
+- **`projection`**: `{name: 1, acquisition: 1}`
 - **`sort`**: ``
 - **`skip`**: ``
-- **`limit`**: ``
+- **`limit`**: `10`
 
 ### 19. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.
 
-- **`query`**: ``
+- **`query`**: `{ founded_year: { $in: [ 2000, 2010 ] }, "acquisition.acquired_year": { $gt: 2011 }}`
 - **`projection`**: ``
 - **`sort`**: ``
 - **`skip`**: ``
